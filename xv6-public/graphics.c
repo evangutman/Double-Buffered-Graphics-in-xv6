@@ -495,7 +495,8 @@ sys_exit_graphics(void)
 int draw_pixel(int x, int y, int color) {
 	
 	//if invalid color handle****
-	
+	if(color < 0 || color > 15)
+		return -1;
 	
 	int temp_index = ((y * 640) + x);
 	int bit_position = 7 - (temp_index % 8);
@@ -566,6 +567,7 @@ int draw_line(int x1, int y1, int x2, int y2, int color) {
 		if(e2 > -dx) { err -= dy; x1 += sx; }
 		if(e2 < dy) { err += dx; y1 += sy; }
 	}
+	blit();
 
 	return 0;
 }

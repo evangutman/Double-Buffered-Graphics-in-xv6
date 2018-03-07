@@ -1,8 +1,6 @@
 #include "types.h"
 #include "user.h"
 
-int test_draw_pixel(void);
-int test_clear_screen(void);
 int test_draw_line(void);
 
 int main(void) {
@@ -12,7 +10,7 @@ int main(void) {
 	int color = 4;
 	
 	init_graphics();
-	test_draw_pixel();
+	//test_draw_line();
 	draw_pixel(x, y, color);	//draw pixel in the middle
 	blit();
 	while(1){
@@ -20,32 +18,27 @@ int main(void) {
 		if(k == -1){
 			sleep(1);
 		} else {
-			//printf(1, "%d", k);
 			switch (k) {
 				case -27:	
-					//draw_pixel(x, y, 0);
-					//blit();
+					clear_screen();
 					x++;
 					draw_pixel(x, y, color);
 					blit();
 					break;
 				case -28:	
-					//draw_pixel(x, y, 0);
-					//blit();
+					clear_screen();
 					x--;
 					draw_pixel(x, y, color);
 					blit();
 					break;
 				case -29:	
-					//draw_pixel(x, y, 0);
-					//blit();
+					clear_screen();
 					y++;
 					draw_pixel(x, y, color);
 					blit();
 					break;
 				case -30:	
-					//draw_pixel(x, y, color);
-					//blit();
+					clear_screen();
 					y--;
 					draw_pixel(x, y, color);
 					blit();
@@ -53,32 +46,15 @@ int main(void) {
 			}
 		}
 	}
-	//test_clear_screen();
-	//test_draw_line();
-	//exit_graphics();
+	exit_graphics();
 	
 	return 0;
 }
-int test_draw_pixel(void) {
-	int i;
-	for( i = 0 ; i < 640 ; i++) {
-		draw_pixel(i, 50, 4);
-		
-	}
-	return 0;
-}
 
-int test_clear_screen(void) {
-	int i;
-	int j;
-	for(i = 0 ; i < 640 ; i++) {
-		for( j = 0 ; j < 640 ; j++) {
-			draw_pixel(i , j , 1);
-		}
-	}
-	clear_screen();
-	return 0;
-}
+
+//Method to test the functionality of my draw_line system call
 int test_draw_line(void) {
+	draw_line(0, 0, 34, 60, 6);
+	draw_line(50, 0, 50, 50, 8);
 	return 0;
 }
