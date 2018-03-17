@@ -567,7 +567,6 @@ int draw_line(int x1, int y1, int x2, int y2, int color) {
 		if(e2 > -dx) { err -= dy; x1 += sx; }
 		if(e2 < dy) { err += dx; y1 += sy; }
 	}
-	blit();
 
 	return 0;
 }
